@@ -1,0 +1,114 @@
+🎯 شنوّا لازمك تفهم (المهم في الدرس)
+1. تعريف Spring Boot
+Framework يسهل تطوير تطبيقات Java
+يخدم فوق Spring Framework
+الهدف: تنقص configuration وتخدم بسرعة
+
+📌 أهم فكرة:
+👉 Spring Boot = speed + simplicité
+
+2. Features لازمك تحفظهم (يجيوا QCM)
+Auto-configuration → يconfiguri وحدو
+Embedded server → serveur داخل (ماكش محتاج تنصّب)
+Standalone app → تخدم بـ java -jar
+Production-ready → metrics + health
+Starters → dependencies جاهزة
+
+📌 هذا أهم part في الامتحان
+
+3. Architecture (structure)
+
+لازمك تفهم 4 layers:
+
+Presentation → Controllers
+Service → logique
+Repository → database access
+Database
+
+📌 ينجم يعطيك schema ويقلك فسّر
+
+4. Annotations (مهم برشة ⚠️)
+
+احفظ دور كل وحدة:
+
+@SpringBootApplication → main
+@RestController → API
+@RequestMapping → routes
+@Autowired → injection
+@Service → logique
+@Repository → database
+
+📌 غالبًا:
+
+QCM
+ولا يقلك role متاع annotation
+5. Auto-configuration كيفاش تخدم
+Spring يشوف dependencies
+يخلق beans وحدو
+
+مثال:
+إذا تضيف web starter →
+✔ Tomcat
+✔ JSON
+✔ DispatcherServlet
+
+📌 الفكرة: automatic setup
+
+6. Project structure
+
+تعرف structure:
+
+controller/
+service/
+repository/
+model/
+resources/application.properties
+
+📌 ينجم يسألك: شنوّا role متاع كل dossier
+
+7. application.properties
+config متاع app
+مثال:
+port
+database
+logging
+
+📌 تحفظ الاسم:
+👉 application.properties
+
+8. كيفاش نشغلو المشروع
+IDE
+Maven: mvn spring-boot:run
+JAR: java -jar
+
+📌 سؤال سهل في QCM
+
+🧠 شنوّا يجي في الامتحان (مهم)
+
+🔴 90%:
+
+QCM كيف اللي عطاهملك
+Definitions
+Features
+Annotations
+
+🔴 ينجم يجي:
+
+تفسير architecture
+role متاع layer
+شرح auto-config
+✅ خلاصة (ركّز عليهم)
+
+احفظ:
+
+تعريف Spring Boot
+Features
+Annotations
+Architecture
+application.properties
+كيفاش نشغلو app
+⚡ نصيحة ليك
+
+ما تحفظش برك، افهم:
+
+👉 كيفاش request تمشي من controller → service → repo

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Produits - PhoneLux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+        
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { color: var(--text); text-decoration: none; font-size: 0.9rem; }
+
+        .container { padding: 4rem 5%; }
+        h1 { font-size: 3rem; margin-bottom: 2rem; }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card { background: var(--card-bg); border-radius: 15px; overflow: hidden; }
+        .card-img { height: 200px; background: #2d3748; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .card-body { padding: 1.5rem; }
+        .card-price { color: var(--primary); font-weight: 700; font-size: 1.2rem; }
+        .card-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/" class="logo">PHONELUX</a>
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/produits">Produits</a></li>
+            <li><a href="/categories">Catégories</a></li>
+            <li><a href="/marques">Marques</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Tous nos Accessoires</h1>
+
+    <div class="products-grid">
+        <div th:each="p : ${produits}" class="card">
+            <div class="card-img">
+                <img th:if="${p.imageUrl}" th:src="${p.imageUrl}" style="width: 100%; height: 100%; object-fit: cover;">
+                <span th:unless="${p.imageUrl}">📦</span>
+            </div>
+            <div class="card-body">
+                <div class="card-meta" th:text="${(p.categorie != null ? p.categorie.nom : 'Inconnu') + ' | ' + (p.marque != null ? p.marque.nom : 'Inconnu')}">Catégorie | Marque</div>
+                <h3 th:text="${p.nom}">Nom Produit</h3>
+                <p th:text="${p.description}" style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0;">Description...</p>
+                <div class="card-price" th:text="${#numbers.formatDecimal(p.prix, 1, 2) + ' €'}">49.99 €</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
